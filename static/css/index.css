@@ -1,0 +1,93 @@
+body{
+	margin: 0;
+	background: #0072FF;
+	overflow-y: hidden;
+}
+
+.profile-container{
+	position: absolute;
+	top: 5vh;
+	left: 50%;
+	height: 30vh;
+	transform: translate(-50%, 0);
+	text-align: center;
+}
+
+.profile-image{
+	clip-path: circle(40%);
+	height: 30vh;
+}
+
+.feather{
+	width: 30vh;
+	height: 30vh;
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%, -100%);
+	background-image: radial-gradient(rgba(0,0,0,0), rgba(0,114,255,0.5), rgba(0,130,255,0.8));
+	clip-path: circle(50%);
+}
+
+.neat-font{
+	font-family: 'Sofia', cursive;
+	color: white;
+}
+
+.profile-name{
+	font-size: 5vmin;
+}
+
+.menus{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	display: block;
+	width: 100%;
+	height: 10vh;
+	align-content: center;
+}
+
+.menu{
+	font-size: 4vmin;
+	display: inline;
+	cursor: pointer;
+}
+
+.menu-padding{
+	display: inline-block;
+	width: 5vw;
+}
+
+.overlay{
+	position: absolute;
+	left: calc(50% - 45vw);
+	top: 100%;
+	width: 90vw;
+	height: 90vh;
+	background-color: rgba(0,100,255,0.9);
+	transition-duration: 500ms;
+}
+
+.close{
+	height: 3vh;
+	width: 3vw;
+	color: #000000;
+	transform: translate(1vh, 0);
+	cursor: pointer;
+}
+
+.close i{
+	font-size: 5vh;
+}
+
+#content{
+	height: 84vh;
+	width: 84vw;
+	transform: translate(3vw, 3vh);
+	font-size: 3vmin;
+}
+
+th, td, a{
+	color: white;
+}
