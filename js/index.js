@@ -8,31 +8,42 @@ content = document.getElementById('content');
 overlay = document.getElementById('overlay');
 close = document.getElementById('close');
 
-console.log(data);
+contentDisplayed = 'none';
 
 profile.addEventListener('click', function() {
 	overlay.style.top = "5vh";
-	content.innerHTML = data.profile.replace("\n", "<br>").replace("\t", "&emsp;");
+	content.innerHTML = data.profile.replace(/\n/g, "<br>").replace(/\t/g, "&emsp;");
+	contentDisplayed = 'profile';
 });
 
 interests.addEventListener('click', function() {
 	overlay.style.top = "5vh";
-	content.innerHTML = "Hello!";
+	content.innerHTML = "";
+	for(i in data.interests) {
+		interest = data.interests[i];
+		console.log(interest);
+		content.innerHTML += '<div class="listItem"><div class="listBG"></div>'+interest+'<div>';
+	}
+	contentDisplayed = 'interests';
+	resizeElements();
 });
 
 projects.addEventListener('click', function() {
 	overlay.style.top = "5vh";
 	content.innerHTML = "Hello!";
+	contentDisplayed = 'projects'
 });
 
 skills.addEventListener('click', function() {
 	overlay.style.top = "5vh";
 	content.innerHTML = "Hello!";
+	contentDisplayed = 'skills'
 });
 
 tech.addEventListener('click', function() {
 	overlay.style.top = "5vh";
 	content.innerHTML = "Hello!";
+	contentDisplayed = 'tech';
 });
 
 certs.addEventListener('click', function() {
@@ -46,6 +57,7 @@ certs.addEventListener('click', function() {
 	}
 	certsData += '</tbody></table>';
 	content.innerHTML = certsData;
+	contentDisplayed = 'certs';
 });
 
 close.addEventListener('click', function() {
@@ -60,3 +72,33 @@ document.addEventListener('keydown', function(evt) {
 		content.innerHTML = "";
 	}
 });
+
+resizeElements = function() {
+	vh = window.innerHeight;
+	vw = window.innerWidth;
+	if(vh > vw) {
+		if(contentDisplayed == 'interests') {
+			listItems = document.querySelectorAll(".listItem");
+			listItems.forEach((listItem) => {
+				listItem.style.width = "28vw";
+			});
+			listItemsBefore = document.querySelectorAll(".listBG");
+			listItemsBefore.forEach((i) => {
+				i.style.width = "26vw";
+			});
+		}
+	} else {
+		if(contentDisplayed == 'interests') {
+			listItems = document.querySelectorAll(".listItem");
+			listItems.forEach((listItem) => {
+				listItem.style.width = "21vw";
+			});
+			listItemsBefore = document.querySelectorAll(".listBG");
+			listItemsBefore.forEach((i) => {
+				i.style.width = "19vw";
+			});
+		}
+	}
+}
+
+window.onresize = resizeElements;
